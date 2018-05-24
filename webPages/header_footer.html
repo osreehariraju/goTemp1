@@ -1,0 +1,27 @@
+<!-- headerAll -->
+{{define "headerAll"}}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="styleSheets/master.css">
+    <link rel="stylesheet" href="styleSheets/imgStyle.css">
+  </head>
+  <body>
+    <div class="headerAll" id="top">
+      <span class="headIcoSpan">
+        <a href="/"><img src="photos/home.png" alt="home" class="headIco"></a>
+      </span>
+      <span class="headTxt">{{.Header}}</span>
+    </div>
+{{end}}
+
+<!-- footerAll -->
+{{define "footerAll"}}
+<div class="footerAll">
+  <a href="#top" class="footerTxt">Go to Top</a>
+</div>
+</body>
+</html>
+{{end}}

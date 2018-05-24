@@ -1,0 +1,28 @@
+.imgsLyot {
+  width: 100%;
+  /* background-color: lightblue; */
+  margin: auto;
+}
+img {
+  width: 240px;
+  height: 300px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+table {
+  /* background-color: blue; */
+  left: 20%;
+  padding: 0px 0px 0px 0px;
+  margin: 0 auto;
+  border: none;
+}
+
+td {
+  padding: 0px 0px 0px 0px;
+  margin: 0 auto;
+}
+
+tr {
+  padding: 0px 0px 0px 0px;
+  margin: 0 auto;
+}

@@ -1,0 +1,53 @@
+body {
+  background-color: white;
+  margin: auto;
+}
+
+.headerAll {
+  text-align: center;
+  background-color: lightskyblue;
+  width: auto;
+  border-bottom: solid;
+  border-width: thin;
+  margin: auto;
+}
+
+.headIcoSpan {
+  text-decoration: none;
+  /*background-color: blue;*/
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+.headIco {
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  border: none;
+}
+.headTxt {
+  left: auto;
+  top: auto;
+  width: 100%;
+  position: relative;
+  font-size:42px;
+  font-family: "Courier New";
+  font-weight: bold;
+  /* background-color: red; */
+}
+
+.footerAll {
+  text-align: center;
+  background-color: gray;
+  font-size: 20px;
+  font-family: "safari";
+  padding: 5px 0px 5px 0px;
+}
+
+.footerTxt {
+  color: black;
+  text-decoration: none;
+}
+.footerTxt:hover {
+  color: blue;
+}
