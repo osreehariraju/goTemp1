@@ -1,0 +1,7 @@
+{{template "headerAll" .}}
+<div class="imgsLyot">
+{{range $img, $e := .ImgS}}
+<a href="photos/dhanya/{{index $.ImgS $img}}" target="_blank"><img src="photos/dhanya/{{index $.ImgS $img}}" alt="notFound"></a>
+{{end}}
+</div>
+{{template "footerAll" .}}
