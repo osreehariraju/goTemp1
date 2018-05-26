@@ -25,6 +25,7 @@ func main() {
 	http.Handle("/clientScripts/", http.StripPrefix("/clientScripts/", http.FileServer(http.Dir("clientScripts"))))
 	http.Handle("/photos/", http.StripPrefix("/photos/", http.FileServer(http.Dir("photos"))))
 	handleHtmls()
+	handlePhotos()
 	appengine.Main()
 }
 

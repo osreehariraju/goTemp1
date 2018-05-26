@@ -4,7 +4,7 @@ import (
 	//"fmt"
 	"net/http"
 	"strconv"
-	"appengine/datastore"
+	//"appengine/datastore"
 )
 
 type registParams struct {
@@ -15,10 +15,9 @@ type registParams struct {
 	Mno int
 	Fmethod string
 }
-	
+
 func handleHtmls() {
 	http.HandleFunc("/home", homeHndl)
-	http.HandleFunc("/myphotos",myPhotosHndl)
 	http.HandleFunc("/register",registerHndl)
 	http.HandleFunc("/contacts",contactsHndl)
 }
@@ -37,11 +36,6 @@ func homeHndl(w http.ResponseWriter, r *http.Request) {
 	htmlTpl.ExecuteTemplate(w, "home.html", pars)
 }
 
-func myPhotosHndl(w http.ResponseWriter, r *http.Request) {
-	hfP := hf_params{"Photos", "PHOTOS"}
-	htmlTpl.ExecuteTemplate(w, "myPhotos.html", hfP)
-}
-
 func registerHndl(w http.ResponseWriter, r *http.Request) {
 	var pars registParams
 		pars.Title = "Register"
@@ -58,7 +52,7 @@ func registerHndl(w http.ResponseWriter, r *http.Request) {
 			pars.Mno = mno
 		}
 		// test for datastore
-			
+
 		// end: test for datastore
 		htmlTpl.ExecuteTemplate(w, "register.html", pars)
 	}
@@ -69,4 +63,3 @@ func contactsHndl(w http.ResponseWriter, r *http.Request) {
 	hfP := hf_params{"Contacts", "CONTACTS"}
 	htmlTpl.ExecuteTemplate(w, "contacts.html", hfP)
 }
-
