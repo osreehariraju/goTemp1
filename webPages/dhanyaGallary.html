@@ -1,7 +1,13 @@
 {{template "headerAll" .}}
+
+{{template "verifyGallPwd" .}}
+
+<div id="vfydGall">
 <div class="imgsLyot">
 {{range $img, $e := .ImgS}}
-<a href="photos/dhanya/{{index $.ImgS $img}}" target="_blank"><img src="photos/dhanya/{{index $.ImgS $img}}" alt="notFound"></a>
+<a href="{{index $.ImgS $img}}" target="_blank"><img src="{{index $.ImgS $img}}" alt="notFound"></a>
 {{end}}
 </div>
+</div>
+
 {{template "footerAll" .}}

@@ -9,23 +9,18 @@
   float: left;
   align-self: center;
 }
-.imgsLyotNewLine {
-	clear: both;
-	float: left;
-	display: block;
-	position: relative;
-}
 
 img{
 	width: 240px;
 	height: 300px;
 	border-radius: 5px;
 }
+
 img:hover{
-  opacity: .8;
-  border-radius: 10px;
+  opacity: .9;
+  border-radius: 25px;
 }
 
-.clearImgLyot {
-	clear: both;
+#vfydGall{
+	visibility: hidden;
 }

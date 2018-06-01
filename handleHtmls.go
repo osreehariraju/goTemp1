@@ -4,7 +4,8 @@ import (
 	//"fmt"
 	"net/http"
 	"strconv"
-	//"appengine/datastore"
+	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine"
 )
 
 type registParams struct {
@@ -14,6 +15,8 @@ type registParams struct {
 	Pwd string
 	Mno int
 	Fmethod string
+	Kinds []string
+	Err error
 }
 
 func handleHtmls() {
@@ -51,9 +54,31 @@ func registerHndl(w http.ResponseWriter, r *http.Request) {
 		if err == nil {
 			pars.Mno = mno
 		}
+		
 		// test for datastore
-
+		ctx := appengine.NewContext(r)
+		kinds,err:=datastore.Kinds(ctx)
+		if err != nil {
+			pars.Err=err
+		}
+		//fmt.Fprintln(w,kinds)
+		kind := "users"
+		name:= pars.Fname
+		type Vals struct {
+			pwd string
+			mno int
+		}
+		var vals Vals
+		vals.pwd=pars.Pwd
+		vals.mno=pars.Mno
+		taskKey := datastore.NewKey(ctx, kind, name, 0,nil)
+		if _, err := datastore.Put(ctx, taskKey, &vals); err != nil {
+			pars.Err=err
+			http.Error(w, err.Error(), 500)
+		}
 		// end: test for datastore
+		pars.Kinds=kinds
+		
 		htmlTpl.ExecuteTemplate(w, "register.html", pars)
 	}
 

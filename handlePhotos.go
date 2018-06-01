@@ -3,6 +3,8 @@ import (
   "io/ioutil"
   "net/http"
   "fmt"
+  "bufio"
+  "strings"
 )
 type params struct {
 	Title  string
@@ -23,14 +25,19 @@ func myPhotosHndl(w http.ResponseWriter, r *http.Request) {
 }
 
 func sreePhotosHndl(w http.ResponseWriter, r *http.Request) {
-  var Imgs []string
-	shG, err := ioutil.ReadDir("./photos/sreehari")
+  	var Imgs []string
+	hariImgs, err := ioutil.ReadFile("hariImgs.txt")
 	if err != nil {
-		fmt.Printf("Error while reading images from directory")
+		fmt.Printf("Error while reading file hariImgs.txt")
 	}
-
-	for _,f:= range shG {
-		Imgs=append(Imgs,f.Name())
+	hariStrs:=string(hariImgs)
+	sr := strings.NewReader(hariStrs)
+	br := bufio.NewReader(sr)
+	line, isPrefix, err := br.ReadLine()
+	fmt.Println(isPrefix)
+	for err == nil {
+			Imgs=append(Imgs,string(line))
+			line, isPrefix, err = br.ReadLine()
 	}
 	pars := params{"Photos - SreeHari", "SreeHari Gallary", Imgs}
 	htmlTpl.ExecuteTemplate(w, "sreehariGallary.html", pars)
@@ -38,13 +45,18 @@ func sreePhotosHndl(w http.ResponseWriter, r *http.Request) {
 
 func dhanyaPhotosHndl(w http.ResponseWriter, r *http.Request) {
   var Imgs []string
-	shG, err := ioutil.ReadDir("./photos/dhanya")
+	dhanyaImgs, err := ioutil.ReadFile("dhanyaImgs.txt")
 	if err != nil {
-		fmt.Printf("Error while reading images from directory")
+		fmt.Printf("Error while reading file dhanyaImgs.txt")
 	}
-
-	for _,f:= range shG {
-		Imgs=append(Imgs,f.Name())
+	dhanyaStrs:=string(dhanyaImgs)
+	sr := strings.NewReader(dhanyaStrs)
+	br := bufio.NewReader(sr)
+	line, isPrefix, err := br.ReadLine()
+	fmt.Println(isPrefix)
+	for err == nil {
+			Imgs=append(Imgs,string(line))
+			line, isPrefix, err = br.ReadLine()
 	}
 	pars := params{"Photos - Dhanya", "Dhanya Gallary", Imgs}
 	htmlTpl.ExecuteTemplate(w, "dhanyaGallary.html", pars)

@@ -1,0 +1,31 @@
+{{define "verifyGallPwd"}}
+<div id="vfyGallPwd">
+        <input type="password" placeholder="password" name="gallpwd" id="gallpwd" required>
+        <button onclick="verifyGallPwd()">Verify</button>
+</div>
+<script>
+function onLoadJS() {
+        document.getElementById('vfydGall').style.visibility='hidden';
+}
+
+function verifyGallPwd() {
+        var pwdd=document.getElementById('gallpwd').value;
+       	if(pwdd=="") {
+                alert("Password is empty.");
+                document.getElementById('gallpwd').focus();
+                document.getElementById('vfydGall').style.visibility='hidden';
+        }
+        else if( pwdd == 'harithegod') {
+                document.getElementById('vfyGallPwd').style.display='none';
+                document.getElementById('vfydGall').style.visibility='visible';
+                return
+        }
+        else {
+                alert("Incorrect password.");
+                document.getElementById('gallpwd').value="";
+                document.getElementById('gallpwd').focus();
+                document.getElementById('vfydGall').style.visibility='hidden';
+        }
+}
+</script>
+{{end}}
